@@ -61,7 +61,7 @@ When('I click on memeber list item', async function() {
     return await element.click();
 })
 
-When('I click on settings', async function() {
+When('I click on settings members', async function() {
     let element = await this.driver.$('.dropdown');
     return await element.click();
 })
@@ -212,12 +212,12 @@ When('I select twitter btn', async function(){
 });
 
 When('I set twitter title as {kraken-string}', async function (title_twittertag) {
-    let element = await this.driver.$('#twitter-title');
+    let element = await this.driver.$('#meta-title');
     return await element.setValue(title_twittertag);
 });
 
 When('I set twitter desc as {kraken-string}',async function(desc_twittertag){
-    let element = await this.driver.$('#twitter-description');
+    let element = await this.driver.$('#meta-description');
     return await element.setValue(desc_twittertag);
 });
 
@@ -227,12 +227,12 @@ When('I select facebook btn', async function(){
 });
 
 When('I set facebook title as {kraken-string}', async function (title_facebooktag) {
-    let element = await this.driver.$('#og-description');
+    let element = await this.driver.$('#meta-description');
     return await element.setValue(title_facebooktag);
 });
 
 When('I set facebook desc as {kraken-string}',async function(desc_facebooktag){
-    let element = await this.driver.$('#og-title');
+    let element = await this.driver.$('#meta-title');
     return await element.setValue(desc_facebooktag);
 });
 
@@ -240,6 +240,12 @@ When('I check data {kraken-string} saved from metatag',async function(title_meta
     let element = await this.driver.$('.gh-seo-preview-title');
     expect(await element.getText()).to.equal(title_metatag);
 });
+
+When('I click save btn', async function(){
+    let element = await this.driver.$('.gh-btn-primary');
+    return await element.click();
+});
+
 
 //david Steps
 
