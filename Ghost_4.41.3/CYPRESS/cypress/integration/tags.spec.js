@@ -1,12 +1,4 @@
-const MainPage = "http://localhost:2368/"
-const UserName = "juans.sanchezlopez@gmail.com"
-const UserPass = "MISO123456789"
-
-// describe('My First Test', () => {
-//     it('Does not do much!', () => {
-//         expect(true).to.equal(true);
-//     })   
-// })
+import { user, password, MainPage } from '../config';
 
 function stringGen(len) {
     var text = "";
@@ -24,24 +16,14 @@ function stringGen(len) {
     return text;
 }
 
-/*function init_login(){
-    cy.visit(MainPage + 'ghost');
-    cy.get('[name="identification"]').type(UserName);
-    cy.get('[name="password"]').type(UserPass);
-    cy.wait(1000);
-    cy.get('.login').click()
-    cy.wait(2000);
-    cy.visit(MainPage+'ghost/#/tags');
-    cy.wait(2000);
-}*/
 
 describe('Testing Ghost Tags', () => {
 
     beforeEach(()=>{
         cy.visit(MainPage + 'ghost/#/signin');
         cy.wait(2000)
-        cy.get('[name="identification"]').type(UserName);
-        cy.get('[name="password"]').type(UserPass);
+        cy.get('[name="identification"]').type(user);
+        cy.get('[name="password"]').type(password);
         cy.get('.login').click()
         cy.wait(2000);
         cy.visit(MainPage+'ghost/#/tags');
@@ -49,23 +31,12 @@ describe('Testing Ghost Tags', () => {
     })
 
     it('1. Visits Tag Main Page', () => {
-        // cy.visit(MainPage + 'ghost');
-        // cy.get('[name="identification"]').type(UserName);
-        // //cy.visit('http://localhost:2368/ghost/#/tags');
-        // //cy.get('.gh-canvas-title').should('contain', 'Tags');
-        // cy.get('[name="password"]').type(UserPass);
-        // cy.wait(1000);
-        // cy.get('[id="ember12"]').click()
-        // cy.wait(2000);
         cy.get('[href="#/tags/"]').click()
         cy.wait(2000);
         cy.get('.gh-canvas-title').should('contain', 'Tags');
     })
     
     it('2. Create New Tag', () => {
-        //INIT
-        //init_login();
-        //INIT 
         cy.get('[href="#/tags/new/"]').click()
         cy.wait(2000);
         const uuid = () => Cypress._.random(0, 1e6)
@@ -113,9 +84,6 @@ describe('Testing Ghost Tags', () => {
     })
     
     it('3. Edit Tag', () => {
-        //INIT
-        //init_login();
-        //INIT 
         cy.get('[href="#/tags/"]').first().click();
         cy.wait(2000);
         cy.get('.tags-list').first().find('[class="gh-tag-list-name"]').first().click()
@@ -140,9 +108,6 @@ describe('Testing Ghost Tags', () => {
     });
     //borrar tag de la lista
     it('4. Delete Tag', () => {
-        //INIT
-        //init_login();
-        //INIT
         cy.get('[href="#/tags/"]').first().click();
         cy.wait(2000);
         cy.get('.tags-list').last().find('[class="gh-tag-list-name"]').last().click()
@@ -160,9 +125,6 @@ describe('Testing Ghost Tags', () => {
 
     //asociar post a tag
     it('5. Associate Post to Tag', () => {
-        //INIT
-        //init_login();
-        //INIT
         cy.get('[href="#/posts/"]').first().click();
         cy.wait(2000);
         cy.get('.posts-list').first().find('[class="gh-list-row gh-posts-list-item"]').first().click();
@@ -193,7 +155,5 @@ describe('Testing Ghost Tags', () => {
             });
         });
     });
-    //desasociar post a tag
-
 
 })
