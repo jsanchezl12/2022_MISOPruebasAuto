@@ -249,8 +249,8 @@ When('I click save btn', async function(){
 
 //david Steps
 
-When('I create post', async function (){
-    let element = await this.driver.$('#ember29');
+When('I click on post buttom', async function (){
+    let element = await this.driver.$('.gh-nav-new-post');
     return await element.click();
 });
 
@@ -260,7 +260,7 @@ Then('I write a post title {kraken-string}', async function (title){
 });
 
 Then('I write a post description {kraken-string}', async function (description){
-    let element1 = await this.driver.$('/html[1]/body[1]/div[2]/div[1]/main[1]/section[1]/div[1]/div[1]/article[1]/div[1]/div[1]');
+    let element1 = await this.driver.$('.koenig-editor__editor');
     return await element1.setValue(description);
 });
 When('I click to create a post', async function (){
@@ -274,17 +274,17 @@ When('I publish a post', async function (){
 });
 
 When('I click post', async function (){
-    let element = await this.driver.$('/html[1]/body[1]/div[2]/div[1]/nav[1]/section[1]/div[1]/ul[2]/li[2]/a[1]');
+    let element = await this.driver.$('/html/body/div[2]/div/nav[1]/div/section/div[1]/ul[2]/li[1]/a[1]');
     return await element.click();
 });
 
 When('I click a post created', async function (){
-    let element = await this.driver.$('/html[1]/body[1]/div[2]/div[1]/main[1]/section[1]/section[1]/ol[1]/li[2]/a[2]/p[1]');
+    let element = await this.driver.$('.gh-content-entry-title');
     return await element.click();
 });
 
 When('I click update', async function (){
-    let element = await this.driver.$('/html[1]/body[1]/div[2]/div[1]/main[1]/section[1]/header[1]/section[1]/div[1]/div[1]/span[1]');
+    let element = await this.driver.$('.settings-menu-toggle');
     return await element.click();
 });
 
@@ -294,7 +294,7 @@ Then('I update the post', async function (){
 });
 
 When('I go back to post menu', async function (){
-    let element = await this.driver.$('/html[1]/body[1]/div[2]/div[1]/main[1]/section[1]/header[1]/div[1]/div[1]/a[1]');
+    let element = await this.driver.$('.gh-editor-back-button');
     return await element.click();
 });
 
@@ -313,11 +313,11 @@ Then('I delete post', async function (){
     return await element.click();
 });
 
-When('I click Unpublished', async function (){
-    let element = await this.driver.$('/html[1]/body[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[2]/div[1]');
+When('I click dropdown publish select', async function (){
+    let element = await this.driver.$('.gh-select');
     return await element.click();
 });
-When('I confirm Unpublished', async function (){
-    let element = await this.driver.$('/html[1]/body[1]/div[1]/div[1]/footer[1]/button[2]/span[1]');
+When('I select only memebers option', async function (){
+    let element = await this.driver.$('/html/body/div[2]/div/main/div/div/div/div/div[2]/form/div[4]/div/span/select/option[2]');
     return await element.click();
 });

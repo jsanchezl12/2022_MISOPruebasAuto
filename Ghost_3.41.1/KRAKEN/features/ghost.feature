@@ -93,7 +93,7 @@ Scenario: Como usuario administrador quiero poder eliminar un miembro
     And I wait for 3 seconds
     And I click on memeber list item 
     And I wait for 3 seconds
-    And I click on settings
+    And I click on settings members
     And I wait for 3 seconds
 
 
@@ -101,53 +101,53 @@ Scenario: Como usuario administrador quiero poder eliminar un miembro
 
 @user6 @web
 Scenario: Como usuario inicio sesion y creo una nueva Pagina
-    Given I navigate to page 'http://localhost:2368/ghost/#/signin'
+    Given I navigate to page "http://localhost:2368/ghost/#/signin"
     And I wait for 5 seconds
     When I enter email "<USERNAME>"
     And I wait for 2 seconds
     And I enter password "<PASSWORD>"
-    And I wait for 2 seconds
+    And I wait for 3 seconds
     And I click next
-    And I wait for 7 seconds
+    And I wait for 3 seconds
     And I click Pages
-    And I wait for 5 seconds
+    And I wait for 3 seconds
     And I click New-Page
-    And I wait for 5 seconds
+    And I wait for 3 seconds
     And I written Page_title 'PAGINA1'
-    And I wait for 5 seconds
+    And I wait for 3 seconds
     And I written Page_content 'PAGINA DESCRIPCION'
     And I click Publish_drop
-    And I wait for 10 seconds
+    And I wait for 3 seconds
     And I click Publish
-    And I wait for 10 seconds
+    And I wait for 3 seconds
 
 @user7 @web
 Scenario: Como usuario actualizo una Pagina Existente
-    Given I navigate to page 'http://localhost:2368/ghost/#/signin'
+    Given I navigate to page "http://localhost:2368/ghost/#/signin"
     And I wait for 5 seconds
     When I enter email "<USERNAME>"
     And I wait for 2 seconds
     And I enter password "<PASSWORD>"
     And I wait for 2 seconds
     And I click next
-    And I wait for 7 seconds
+    And I wait for 3 seconds
     And I click Pages
-    And I wait for 5 seconds
+    And I wait for 3 seconds
     And I edit last page
-    And I wait for 10 seconds
+    And I wait for 3 seconds
     And I written Page_title 'PAGETITLE2'
-    And I wait for 5 seconds
+    And I wait for 3 seconds
     And I clear Page_content
-    And I wait for 5 seconds
+    And I wait for 3 seconds
     And I written Page_content 'DESCRIPTION2'
-    And I wait for 5 seconds
+    And I wait for 3 seconds
     And I click Publish_drop
-    And I wait for 5 seconds
+    And I wait for 3 seconds
     And I click Publish
 
 @user8 @web
 Scenario: Como usuario elimino una Pagina Existente
-    Given I navigate to page 'http://localhost:2368/ghost/#/signin'
+    Given I navigate to page "http://localhost:2368/ghost/#/signin"
     And I wait for 5 seconds
     When I enter email "<USERNAME>"
     And I wait for 2 seconds
@@ -168,7 +168,7 @@ Scenario: Como usuario elimino una Pagina Existente
 
 @user9 @web
 Scenario: Como usuario filtro las paginas publicadas del listado de paginas
-    Given I navigate to page 'http://localhost:2368/ghost/#/signin'
+    Given I navigate to page "http://localhost:2368/ghost/#/signin"
     And I wait for 5 seconds
     When I enter email "<USERNAME>"
     And I wait for 2 seconds
@@ -188,7 +188,6 @@ Scenario: Como usuario filtro las paginas publicadas del listado de paginas
 Scenario: Inicio de Sesion - Tags
     Given I navigate to page "http://localhost:2368/ghost/#/signin"
     And I wait for 2 seconds
-    And I click email input
     When I enter email "<USERNAME>"
     And I wait for 2 seconds
     And I enter password "<PASSWORD>"
@@ -203,7 +202,6 @@ Scenario: Inicio de Sesion - Tags
 Scenario: Update Tag MetaData - Tags
     Given I navigate to page "http://localhost:2368/ghost/#/signin"
     And I wait for 2 seconds
-    And I click email input
     When I enter email "<USERNAME>"
     And I wait for 2 seconds
     And I enter password "<PASSWORD>"
@@ -226,7 +224,6 @@ Scenario: Update Tag MetaData - Tags
 Scenario: Update Tag TwitterData - Tags
     Given I navigate to page "http://localhost:2368/ghost/#/signin"
     And I wait for 2 seconds
-    And I click email input
     When I enter email "<USERNAME>"
     And I wait for 2 seconds
     And I enter password "<PASSWORD>"
@@ -249,7 +246,6 @@ Scenario: Update Tag TwitterData - Tags
 Scenario: Update Tag FacebookData - Tags
     Given I navigate to page "http://localhost:2368/ghost/#/signin"
     And I wait for 2 seconds
-    And I click email input
     When I enter email "<USERNAME>"
     And I wait for 2 seconds
     And I enter password "<PASSWORD>"
@@ -272,7 +268,6 @@ Scenario: Update Tag FacebookData - Tags
 Scenario: Check Metadata Tags - Tags
     Given I navigate to page "http://localhost:2368/ghost/#/signin"
     And I wait for 2 seconds
-    And I click email input
     When I enter email "<USERNAME>"
     And I wait for 2 seconds
     And I enter password "<PASSWORD>"
@@ -290,95 +285,3 @@ Scenario: Check Metadata Tags - Tags
     And I set meta desc as "<META_TAG_DESC>"
     And I click save btn
     And I wait for 3 seconds
-    And I check data "<META_TAG_TITLE>" saved from metatag
-    And I wait for 3 seconds
-    
-#Escenarios David
-
-@user15 @web
-Scenario: Creación y publicación de un Post
-    Given I navigate to page "http://localhost:2368/ghost/#/site"
-    And I wait for 1 seconds
-    When I enter email "<USERNAME>"
-    And I wait for 5 seconds
-    And I enter password "<PASSWORD>"
-    And I wait for 5 seconds
-    And I click next
-    And I wait for 1 seconds 
-    When I create post 
-    And I wait for 1 seconds
-    When I write a post title "<POSTITLE1>"
-    And I wait for 1 seconds
-    When I write a post description "<DESCRIPTION1>"
-    And I wait for 1 seconds
-    And I click to create a post
-    And I wait for 1 seconds
-    And I publish a post
-    And I wait for 1 seconds
-    And I go back to post menu
-
-@user16 @web
-Scenario: Actualización de un Post
-    Given I navigate to page "http://localhost:2368/ghost/#/site"
-    And I wait for 1 seconds
-    When I enter email "<USERNAME>"
-    And I wait for 5 seconds
-    And I enter password "<PASSWORD>"
-    And I wait for 5 seconds
-    And I click next
-    And I wait for 1 seconds
-    And I click post
-    And I wait for 1 seconds
-    And I click a post created
-    And I wait for 1 seconds
-    And I write a post description "<DESCRIPTION1>"
-    And I wait for 1 seconds
-    And I click update
-    And I wait for 1 seconds
-    And I update the post
-    And I wait for 1 seconds
-    And I go back to post menu
-
-@user17 @web
-Scenario: Cambiar Post de estado Publish a Draft
-    And I wait for 30 seconds
-    Given I navigate to page "http://localhost:2368/ghost/#/site"
-    And I wait for 2 seconds
-    When I enter email "<USERNAME>"
-    And I wait for 5 seconds
-    And I enter password "<PASSWORD>"
-    And I wait for 5 seconds
-    And I click next
-    And I click post
-    And I wait for 2 seconds
-    And I click a post created
-    And I wait for 2 seconds
-    And I click update
-    And I wait for 2 seconds
-    And I click Unpublished
-    And I wait for 2 seconds
-    And I confirm Unpublished
-    And I wait for 2 seconds
-    And I go back to post menu
-
-@user18 @web
-Scenario: Eliminación de un Post
-    And I wait for 2 seconds
-    Given I navigate to page "http://localhost:2368/ghost/#/site"
-    And I wait for 2 seconds
-    When I enter email "<USERNAME>"
-    And I wait for 5 seconds
-    And I enter password "<PASSWORD>"
-    And I wait for 5 seconds
-    And I click next
-    And I wait for 2 seconds
-    And I click post
-    And I wait for 2 seconds
-    And I click a post created
-    And I wait for 2 seconds
-    And I click on settings
-    And I wait for 2 seconds
-    And I click delete button
-    And I wait for 2 seconds
-    And I delete post
-    And I wait for 2 seconds
