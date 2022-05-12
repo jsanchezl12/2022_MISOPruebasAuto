@@ -376,3 +376,38 @@ Scenario: Cambiar Post de estado Publish a Draft
     And I wait for 2 seconds
     And I delete post
     And I wait for 2 seconds
+
+@user19 @web
+Scenario: Como usuario quiero visitar la pagina principal de staff
+    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    And I wait for 2 seconds
+    When I enter email "<USERNAME>"
+    And I wait for 2 seconds
+    And I enter password "<PASSWORD>"
+    And I wait for 2 seconds
+    And I click next
+    And I wait for 3 seconds
+    And I click on setting general button
+    And I wait for 3 seconds
+    And I click on staff button
+    And I wait for 3 seconds
+
+@user20 @web
+Scenario: Como usuario quiero invitar personas a mi staff
+    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    And I wait for 2 seconds
+    When I enter email "<USERNAME>"
+    And I wait for 2 seconds
+    And I enter password "<PASSWORD>"
+    And I wait for 2 seconds
+    And I click next
+    And I wait for 3 seconds
+    And I click on setting general button
+    And I wait for 3 seconds
+    And I click on staff button
+    And I wait for 3 seconds
+    And I click on invite people button
+    And I wait for 3 seconds
+    And I enter email user invite "<INVITE_STAFF>"
+    And I wait for 3 seconds
+    And I click on send invite
