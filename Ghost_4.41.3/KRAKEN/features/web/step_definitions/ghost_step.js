@@ -321,3 +321,31 @@ When('I select only memebers option', async function (){
     let element = await this.driver.$('/html/body/div[2]/div/main/div/div/div/div/div[2]/form/div[4]/div/span/select/option[2]');
     return await element.click();
 });
+
+//Steps Staff
+
+
+When('I click on setting general button', async function (){
+    let element = await this.driver.$('.settings_svg__a');
+    return await element.click();
+});
+
+When('I click on staff button', async function (){
+    let element = await this.driver.$('.green');
+    return await element.click();
+});
+
+When('I click on invite people button', async function (){
+    let element = await this.driver.$('/html/body/div[2]/div/main/section/div/header/section/button/span');
+    return await element.click();
+});
+
+When('I enter email user invite {kraken-string}', async function (email_invite) {
+    let element = await this.driver.$('#new-user-email');
+    return await element.setValue(email_invite);
+});
+
+When('I click on send invite', async function (){
+    let element = await this.driver.$('/html/body/div[5]/div/div/div/div/div[2]/section/div/div[2]/button/span');
+    return await element.click();
+});
