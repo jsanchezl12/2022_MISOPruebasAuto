@@ -286,4 +286,93 @@ Scenario: Check Metadata Tags - Tags
     And I click save btn
     And I wait for 3 seconds
 
-    
+#Escenarios David
+
+@user15 @web
+Scenario: Creación y publicación de un Post
+    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    And I wait for 1 seconds
+    When I enter email "<USERNAME>"
+    And I wait for 3 seconds
+    And I enter password "<PASSWORD>"
+    And I wait for 3 seconds
+    And I click next
+    And I wait for 1 seconds 
+    When I click on post buttom 
+    And I wait for 3 seconds
+    When I write a post title "<POSTITLE>"
+    And I wait for 1 seconds
+    When I write a post description "<DESCRIPTION1>"
+    And I wait for 1 seconds
+    And I click to create a post
+    And I wait for 1 seconds
+    And I publish a post
+    And I wait for 1 seconds
+    And I go back to post menu
+
+@user16 @web
+Scenario: Actualización de un Post
+    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    And I wait for 1 seconds
+    When I enter email "<USERNAME>"
+    And I wait for 3 seconds
+    And I enter password "<PASSWORD>"
+    And I wait for 3 seconds
+    And I click next
+    And I wait for 1 seconds
+    And I click post
+    And I wait for 1 seconds
+    And I click a post created
+    And I wait for 1 seconds
+    When I write a post title "<POSTITLE>"
+    And I wait for 1 seconds
+    When I write a post description "<DESCRIPTION1>"
+    And I wait for 1 seconds
+    And I click to create a post
+    And I wait for 1 seconds
+    And I publish a post
+    And I wait for 1 seconds
+    And I go back to post menu
+
+@user17 @web
+Scenario: Cambiar Post de estado Publish a Draft
+    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    And I wait for 1 seconds
+    When I enter email "<USERNAME>"
+    And I wait for 3 seconds
+    And I enter password "<PASSWORD>"
+    And I wait for 3 seconds
+    And I click next
+    And I wait for 1 seconds
+    And I click post
+    And I wait for 1 seconds
+    And I click a post created
+    And I wait for 2 seconds
+    And I click update
+    And I wait for 2 seconds
+    And I click dropdown publish select
+    And I wait for 2 seconds
+    And I select only memebers option
+    And I wait for 2 seconds
+    And I go back to post menu
+
+@user18 @web
+Scenario: Cambiar Post de estado Publish a Draft
+    Given I navigate to page "http://localhost:2368/ghost/#/signin"
+    And I wait for 1 seconds
+    When I enter email "<USERNAME>"
+    And I wait for 3 seconds
+    And I enter password "<PASSWORD>"
+    And I wait for 3 seconds
+    And I click next
+    And I wait for 1 seconds
+    And I click post
+    And I wait for 1 seconds
+    And I click a post created
+    And I wait for 2 seconds
+    And I click update
+    And I wait for 2 seconds
+    And I click delete button
+    And I wait for 2 seconds
+    And I delete post
+    And I wait for 2 seconds
