@@ -1,5 +1,15 @@
 import { user, password, MainPage } from '../config';
 
+var count = 0;
+function ScreenShot(){
+    // const uuidd = () => Cypress._.random(0, 1e6)
+    // const id = uuidd()
+    const testname = `screenshot_${count}`
+    cy.screenshot(testname);
+    cy.wait(2000);
+    count++;
+}
+
 describe('Testing Ghost members option', () => {
     beforeEach(()=>{
         cy.visit(MainPage + 'ghost/#/signin')
@@ -29,10 +39,12 @@ describe('Testing Ghost members option', () => {
             }
             cy.get('[href="#/members/"]').first().click()
             cy.wait(2000)
+            ScreenShot();
             cy.get('[href="#/members/new/"]').first().click()
             cy.wait(2000)
             cy.get('.gh-setting-title').should('have.text', 'Subscribed to newsletter')
             cy.wait(2000)
+            ScreenShot();
             cy.get('[href="#/members/"]').first().click()
             cy.wait(2000)
             cy.get('[placeholder="Search members..."]').click()
@@ -42,17 +54,21 @@ describe('Testing Ghost members option', () => {
             cy.get('[href="#/members/"]').first().click()
             cy.wait(2000)
             cy.get('.gh-members-header-search').type('Prueba')
+            ScreenShot();
             cy.wait(2000)
             cy.get('.no-posts').should('have.text', '\n                        \n                            \n                                \n                                    No members match the current filter\n                            \n                        \n                \n                                \n                                    No members match the current filter\n                            ')
             cy.wait(2000)
+            ScreenShot();
         })        
     })
 
     it('crear un nuevo miembro', ()=>{
         cy.get('[href="#/members/"]').first().click()
         cy.wait(2000)
+        ScreenShot();
         cy.get('[href="#/members/new/"]').first().click()
         cy.wait(2000)
+        ScreenShot();
         const uuid = () => Cypress._.random(0, 1e6)
         const id = uuid()
         cy.get('#member-email').type(`prueba_cypres${id}@test.com`)
@@ -63,10 +79,12 @@ describe('Testing Ghost members option', () => {
         cy.wait(2000)
         cy.get('#member-note').type('Esta es una nota para el miembro creado ')
         cy.wait(2000)
+        ScreenShot();
         cy.get('[class="gh-btn gh-btn-blue gh-btn-icon ember-view"]').click()
         cy.wait(2000)
         cy.get('.gh-canvas-title').should('have.text', `\n            Members\n            \n                Test User ${id}\n        `)
         cy.wait(2000)
+        ScreenShot();
     }) 
 
     it('Filtrar por miembro', ()=>{
@@ -75,6 +93,7 @@ describe('Testing Ghost members option', () => {
         cy.get('.gh-members-header-search').type('Prueba')
         cy.wait(3000)
         cy.get('.gh-members-list-name').should('contain', 'Test User')
+        ScreenShot();
     }) 
 /*
     it('Gestionar Filtros', ()=>{
@@ -96,16 +115,20 @@ describe('Testing Ghost members option', () => {
         cy.wait(2000)
         cy.get('.gh-members-list-name').contains("Test User").click()
         cy.wait(2000)
+        ScreenShot();
         cy.get('[id="member-name"]').invoke('val').then((val) => {        
             var valueUser = `${val}`;
+            ScreenShot();
             cy.get('.gh-btn-red').click()
             cy.wait(2000)
+            ScreenShot();
             cy.get('[class="gh-btn gh-btn-red gh-btn-icon ember-view"]').click()
             cy.wait(2000)
             cy.get('.gh-members-header-search').type(valueUser)
             cy.wait(3000)
             cy.get('.gh-members-list-name').should('not.exist', valueUser)
             cy.wait(2000)
+            ScreenShot();
         });
         
     })  

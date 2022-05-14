@@ -16,6 +16,16 @@ function stringGen(len) {
     return text;
 }
 
+var count = 0;
+function ScreenShot(){
+    // const uuidd = () => Cypress._.random(0, 1e6)
+    // const id = uuidd()
+    const testname = `screenshot_${count}`
+    cy.screenshot(testname);
+    cy.wait(2000);
+    count++;
+}
+
 describe('Testing Ghost Tags', () => {
 
     beforeEach(()=>{
@@ -33,11 +43,13 @@ describe('Testing Ghost Tags', () => {
         cy.get('[href="#/tags/"]').click()
         cy.wait(2000);
         cy.get('.gh-canvas-title').should('contain', 'Tags');
+        ScreenShot();
     })
     
     it('2. Create New Tag', () => {
         cy.get('[href="#/tags/new/"]').click()
         cy.wait(2000);
+        ScreenShot();
         const uuid = () => Cypress._.random(0, 1e6)
         const id = uuid()
         const testname = `testname${id}`
@@ -53,6 +65,7 @@ describe('Testing Ghost Tags', () => {
                 expect(text.trim()).equal(baseURL)
             });
         });
+        ScreenShot();
         
         cy.get('[name="description"]').type(stringGen(501), {force: true});
         //Verificar descripcion mayor a 500 caracteres
@@ -62,6 +75,7 @@ describe('Testing Ghost Tags', () => {
         .should('equal', 'rgb(226, 84, 64)');
 
         cy.wait(2000);
+        ScreenShot();
         //Borrar descripcion
         cy.get('[name="description"]').clear({force: true});
 
@@ -73,6 +87,7 @@ describe('Testing Ghost Tags', () => {
         .invoke('css', 'color')
         .should('equal', 'rgb(159, 187, 88)');
         //Guardar tag
+        ScreenShot();
         cy.get('.view-actions').click()
         //Regresar a la pagina principal
         cy.get('[href="#/tags/"]').first().click();
@@ -80,6 +95,7 @@ describe('Testing Ghost Tags', () => {
         //Revisar que si este creado el tag
         cy.get('[href="#/tags/' + testname.replace(" ","-") + '/"]')
         .get('[class="gh-tag-list-name"]').should('contain', testname);
+        ScreenShot();
     })
     
     it('3. Edit Tag', () => {
@@ -87,6 +103,7 @@ describe('Testing Ghost Tags', () => {
         cy.wait(2000);
         cy.get('.tags-list').first().find('[class="gh-tag-list-name"]').first().click()
         cy.wait(2000);
+        ScreenShot();
         cy.get('[name="name"]').invoke('val').then((val) => {
             var valueChg = `${val}_edited`;
             valueChg = valueChg.toLowerCase();
@@ -95,30 +112,37 @@ describe('Testing Ghost Tags', () => {
             cy.wait(2000);
             cy.get('[id="tag-slug"]').clear({force: true});
             cy.get('[id="tag-slug"]').type(valueChg,{force: true});
+            ScreenShot();
             //Guardar tag
             cy.get('.view-actions').click()
             //Regresar a la pagina principal
             cy.get('[href="#/tags/"]').first().click();
             cy.wait(2000);
+            ScreenShot();
             //Revisar que si este creado el tag
             cy.get('[href="#/tags/' + valueChg.replace(" ","-") + '/"]')
             .should('contain', valueChg, { matchCase: false });
+            ScreenShot();
         });
     });
     //borrar tag de la lista
     it('4. Delete Tag', () => {
         cy.get('[href="#/tags/"]').first().click();
         cy.wait(2000);
+        ScreenShot();
         cy.get('.tags-list').last().find('[class="gh-tag-list-name"]').last().click()
         cy.wait(2000);
         cy.get('[class="gh-btn gh-btn-red gh-btn-icon mb15"]').click()
         cy.wait(2000);
+        ScreenShot();
         cy.get('[name="name"]').invoke('val').then((val) => {
             var valuedel = `${val}`;
             console.log(valuedel);
             cy.get('[class="gh-btn gh-btn-red gh-btn-icon ember-view"]').click(); 
             cy.wait(2000);
+            ScreenShot();
             cy.get('.tags-list').should('not.contain', valuedel , { matchCase: false })
+            ScreenShot();
         });
     });
 
@@ -128,7 +152,9 @@ describe('Testing Ghost Tags', () => {
         cy.wait(2000);
         cy.get('.posts-list').first().find('[class="gh-list-row gh-posts-list-item"]').first().click();
         cy.wait(2000);
+        ScreenShot();
         cy.get('[title="Settings"]').click();
+        ScreenShot();
         cy.get('[class="ember-power-select-trigger-multiple-input"]').first().click();
         cy.get('[class="ember-power-select-options"]').find('[class="ember-power-select-option"]').first().click();
         cy.get('[placeholder="Post Title"]').invoke('val').then((valP) => {
@@ -138,19 +164,23 @@ describe('Testing Ghost Tags', () => {
             .first().get('[class="ember-power-select-multiple-option tag-token js-draggableObject draggable-object ember-view"]').first().invoke('text').then((valT) => {
                 var valueTag = `${valT}`;
                 var valueTag = valueTag.replace(" ","").replace("\n","").trim();
+                ScreenShot();
                 console.log(valueTag);
                 cy.get('[class="close settings-menu-header-action"]').click();
                 cy.wait(2000);
                 cy.get('[class="ember-view ember-basic-dropdown-trigger  gh-btn gh-btn-outline gh-publishmenu-trigger"]').click();
+                ScreenShot();
                 cy.get('footer').get('[class="gh-btn gh-btn-blue gh-publishmenu-button gh-btn-icon ember-view"]').click();
                 cy.wait(6000);
                 cy.get('[href="#/posts/"]').first().click();
                 cy.wait(2000);
                 cy.get('[href="#/tags/"]').first().click();
                 cy.wait(2000);
+                ScreenShot();
                 cy.get(`[href="#/posts/?tag=${valueTag.replace(" ","-")}"]`).click();
                 cy.wait(2000);
                 cy.get('[class="content-list"]').should('contain', valuepost);
+                ScreenShot();
             });
         });
     });
