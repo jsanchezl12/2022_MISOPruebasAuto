@@ -1,3 +1,14 @@
+var count = 0;
+function ScreenShot(){
+    // const uuidd = () => Cypress._.random(0, 1e6)
+    // const id = uuidd()
+    const testname = `screenshot_${count}`
+    cy.screenshot(testname);
+    cy.wait(2000);
+    count++;
+}
+
+
 describe('Testing Ghost Members', () => {
     beforeEach(()=>{
        cy.visit('http://localhost:2368/ghost/#/signin')
