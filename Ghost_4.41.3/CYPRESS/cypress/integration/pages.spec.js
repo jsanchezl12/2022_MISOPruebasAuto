@@ -1,13 +1,11 @@
-import { user, password, MainPage } from '../config';
-
 describe('Testing Ghost Pages', () => {
     beforeEach(()=>{
-        cy.visit(MainPage + 'ghost/#/signin');
-        cy.wait(3000)
-        cy.get("#ember7").type(user)
-        cy.get("#ember9").type(password)
+       cy.visit('http://localhost:2368/ghost/#/signin')
+        cy.wait(7000)
+        cy.get("#ember7").type('e.tapia@uniandes.edu.co')
+        cy.get("#ember9").type('12345678910')
         cy.get('#ember11').click()
-        cy.wait(3000)
+        cy.wait(7000)
     })
 
     
@@ -25,7 +23,8 @@ describe('Testing Ghost Pages', () => {
         cy.get('div.gh-editor-post-status  > span > div').should("have.text",
         "\n        Published\n")
     }) 
-
+       
+       
     it('Actualizar titulo y contenido de  una  pagina', ()=>{
         cy.get('#ember28').click()
         cy.wait(9000)

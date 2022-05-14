@@ -1,13 +1,11 @@
-import { user, password, MainPage } from '../config';
-
-describe('Testing Ghost members option', () => {
+describe('Testing Ghost Members', () => {
     beforeEach(()=>{
-        cy.visit(MainPage + 'ghost/#/signin');
+       cy.visit('http://localhost:2368/ghost/#/signin')
         cy.wait(3000)
-        cy.get("#ember7").type(user)
-        cy.get("#ember9").type(password)
+        cy.get("#ember7").type('e.tapia@uniandes.edu.co')
+        cy.get("#ember9").type('12345678910')
         cy.get('#ember11').click()
-        cy.wait(3000)
+        cy.wait(5000)
     })
 
     it('Explorar opciones de members', ()=>{
@@ -22,12 +20,11 @@ describe('Testing Ghost members option', () => {
         cy.get('.gh-btn-action-icon').contains("Filter").click()
         cy.wait(2000)
         cy.get('.gh-btn-primary').should('have.text', '\n                Apply filters\n            New member')
-        //cy.wait(2000)
-        //cy.get('#members_svg__Regular').click()
         cy.wait(2000)
-        cy.get('[aria-label="Name filter"]').type('Prueba')
+        cy.get('#members_svg__Regular').click()
         cy.wait(2000)
-        cy.get('[class="gh-btn gh-btn-primary"]').click()
+        cy.get('.gh-members-header-search').type('Prueba')
+        cy.wait(2000)
         cy.get('.gh-members-empty').should('have.text', '\n                        \n                        No members match the current filter\n                        \n                            Show all members\n                        \n                    ')
         cy.wait(2000)
     })
@@ -37,11 +34,9 @@ describe('Testing Ghost members option', () => {
         cy.wait(2000)
         cy.get('.gh-btn-primary').click()
         cy.wait(2000)
-        const uuid = () => Cypress._.random(0, 1e6)
-        const id = uuid()
-        cy.get('#member-email').type(`prueba_cypres${id}@test.com`)
+        cy.get('#member-email').type('prueba_cypres@test.com')
         cy.wait(2000)
-        cy.get('#member-name').type(`Test User ${id}`)
+        cy.get('#member-name').type('Test User')
         cy.wait(2000)
         cy.get('.ember-power-select-trigger-multiple-input').type('Universidad de los andes')
         cy.wait(2000)
@@ -51,9 +46,9 @@ describe('Testing Ghost members option', () => {
         cy.wait(2000)
         cy.get('.gh-main-section-header').should('have.text', 'Engagement')
         cy.wait(2000)
-    }) 
+     }) 
 
-    it('Filtrar por miembro', ()=>{
+     it('Filtrar por miembro', ()=>{
         cy.get('#members_svg__Regular').click()
         cy.wait(3000)
         cy.get('.gh-members-header-search').type('Prueba')
@@ -73,7 +68,7 @@ describe('Testing Ghost members option', () => {
         cy.get('.gh-add-filter').click()
         cy.wait(2000)
         cy.get('.gh-btn-primary').should('have.text', '\n                Apply filters\n            New member')
-    })
+    }) 
 
     it('Eliminar un miembro', ()=>{
         cy.get('#members_svg__Regular').click()
@@ -85,12 +80,9 @@ describe('Testing Ghost members option', () => {
         cy.wait(2000)
         cy.get('.gh-btn-icon').contains("Delete member").click()
         cy.wait(2000)
-        cy.get('.gh-btn-action-icon').contains("Filter").click()
-        cy.wait(2000)
-        cy.get('[aria-label="Name filter"]').type('Prueba')
+        cy.get('.gh-members-header-search').type('Prueba')
         cy.wait(3000)
-        cy.get('[class="gh-btn gh-btn-primary"]').click()
-        cy.get('.gh-list').should('not.exist', 'Test User')
+        cy.get('.gh-members-list-name').should('not.exist', 'Test User')
         cy.wait(2000)
-    })  
+     })  
 })
