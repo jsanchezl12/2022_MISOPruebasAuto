@@ -21,10 +21,10 @@ describe('Testing Ghost Pages', () => {
 
     
 	it('Publicar una nueva pagina', ()=>{
-        cy.get('[href="#/pages/"]').click()
+        cy.get('[href="#/pages/"]').first().click()
         cy.wait(3000)
         ScreenShot();
-        cy.get('[href="#/editor/page/"]').click()
+        cy.get('[href="#/editor/page/"]').first().click()
         cy.wait(3000)
         ScreenShot();
         cy.get('[placeholder="Page Title"]').type('Esta es una pagina de prueba')
@@ -72,21 +72,4 @@ describe('Testing Ghost Pages', () => {
         cy.get('.items-center').should("contain","Draft")
         ScreenShot();
         })  		
-
-    it('Eliminar pagina', ()=>{
-        cy.get('[href="#/pages/"]').click()
-        cy.wait(3000)
-        ScreenShot();
-        cy.get('.gh-posts-list-item > a > .gh-content-entry-title').contains("Esta es una pagina de prueba actualizada").first().click()
-        cy.wait(3000)
-        ScreenShot();
-        cy.get('.post-settings').first().click()
-        cy.get('form > .gh-btn > span').click()
-        cy.wait(3000)
-        ScreenShot();
-        cy.get('[class="gh-btn gh-btn-red gh-btn-icon ember-view"]').click()
-        cy.url().should('eq', 'http://localhost:2368/ghost/#/pages')
-        ScreenShot();
-    })  
-    
 })  

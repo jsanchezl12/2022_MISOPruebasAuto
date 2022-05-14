@@ -26,11 +26,6 @@ describe("Probando cypress sobre Ghost", function () {
         Login(user, password);
         Publish_to_unpublish();
     });
-    it("Deleting_Post", function () {
-        //Función para loguearse en la app
-        Login(user, password);
-        Deleting_Post();
-    });
 });
 
 function Login(user, password) {
@@ -101,22 +96,5 @@ function Publish_to_unpublish(){
     cy.get('.gh-publishmenu-button').click();
     cy.wait(1000);
     cy.get('.fw3').click();
-    ScreenShot();
-}
-function Deleting_Post(){
-    cy.get('.ember-view').contains('Posts').click();
-    cy.wait(1000);
-    ScreenShot();
-    cy.get('.posts-list > :nth-child(2)').click();
-    cy.wait(1000);
-    ScreenShot();
-    cy.get('.post-settings').click();
-    cy.wait(1000);
-    ScreenShot();
-    cy.get('form > .gh-btn > span').click();
-    cy.wait(1000);
-    ScreenShot();
-    cy.get('.gh-btn-red').click();
-    cy.wait(1000);
     ScreenShot();
 }
