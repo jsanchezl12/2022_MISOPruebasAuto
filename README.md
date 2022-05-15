@@ -1,6 +1,20 @@
 # Ghost-Issues
 Reporte de incidencias Ghost 
 
+# pruebas de regresión visuales
+## Pasos para ejecutar los 10 test E2E seleccionados
+- Ingrese al repositorio de GitHub del proyecto (https://github.com/jsanchezl12/2022_MISOPruebasAuto)
+- Clone el repositorio (git clone https://github.com/jsanchezl12/2022_MISOPruebasAuto.git)
+- Cambie de rama a la rama de Pruebas de regresión visuales (git checkout visual-regression-test)
+- En la raiz del proyecto existen 2 carpetas principales (Ghost_3.41.1 y Ghost_4.41.3)
+- Cada carpeta tiene los test seleccionados para cada herramienta (Cypress y Kraken) en su respectiva versión
+- En la raiz tambien existe una carpeta donde este el resultado de las pruebas de regresión visual con (Backstop)
+- Ingrese a la carpeta que quiere consultar (Cypress o Kraken)
+- Ingrese a la carpeta (html_report)
+- Ejecute el archivo (index.html) en un navegador (Chrome, Firefox, Opera, etc)
+- Se desplegara el reporte del resultado de las pruebas de regresión visual
+
+
 # pruebas-ghost
 ## Pruebas automatizadas - KRAKEN
 
