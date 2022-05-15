@@ -1,6 +1,23 @@
 # Ghost-Issues
 Reporte de incidencias Ghost 
 
+
+# Pasos para ejecutar la pruebas
+- Clone el repositorio (git clone https://github.com/jsanchezl12/2022_MISOPruebasAuto.git)
+- Asegurese de ubicarse en la rama principal donde se encuentran todos los test integrados (git checkout main)
+- Las pruebas se encuentran separadas en dos carpetas por versiones Ghost_3.41.1 y Ghost_4.41.3 cada una a su vez contienen las pruebas desarrolladas con Kraken y Cypress
+- Inicie el servidor Ghost según la version que vaya probar en su maquina local (ghost start)
+- Ubiquese en la carpeta contenedora segun la version de Ghost elegida
+- Si decide realizar la pruebas con Kraken  por favor modifique el archivo properties.json con sus credenciales para que la pruebas se ejecuten correctamente
+- Verifique que el directorio apunte a la carpeta con la version elegida de Ghost/KRAKEN
+- Ejecute la pruebas con el comando ./node_modules/kraken-node/bin/kraken-node run
+- Si decide realizar la pruebas con Cypress verifique que el directorio apunte a la carpeta con la version elegida de Ghost/CYPRESS
+- Para que los tests ejecuten de manera correcta ingrese a los archivos (members.spect.js, pages.spect.js, post.spect.js y tags.spect.js) y edite el usuario y contraseña en cada archivo con su usuario y contraseña de Ghost,
+- Ejecute la pruebas a través de la consola desplegada por Cypress
+- Si decide cambiar de version ubiquese en la carpeta con la version de Ghost elegida
+- Inicie el servidor Ghost según la version que vaya probar en su maquina local (ghost start) y repita los pasos anteriores
+ 
+
 # pruebas de regresión visuales
 ## Pasos para ejecutar los 10 test E2E seleccionados
 - Ingrese al repositorio de GitHub del proyecto (https://github.com/jsanchezl12/2022_MISOPruebasAuto)
