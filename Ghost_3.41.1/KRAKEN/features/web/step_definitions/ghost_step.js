@@ -20,13 +20,13 @@ When('I click next', async function() {
 })
 
 When('I click members button', async function() {
-    let element = await this.driver.$('#members_svg__Regular');
+    let element = await this.driver.$('[href="#/members/"]');
     await element.click();
     return await this.driver.saveScreenshot('./members/members_button.png')
 })
 
 When('I click new member button', async function() {
-    let element = await this.driver.$('.gh-btn-primary');
+    let element = await this.driver.$('.gh-btn-green');
     await element.click();
     return await this.driver.saveScreenshot('./members/new_member_button.png')
 })
@@ -60,7 +60,7 @@ When('I enter notes new memeber {kraken-string}', async function (member_notes) 
 })
 
 When('I click save button', async function() {
-    let element = await this.driver.$('.gh-btn-primary');
+    let element = await this.driver.$('.gh-btn-blue');
     await element.click();
     return await this.driver.saveScreenshot('./members/save_button.png');
 })
