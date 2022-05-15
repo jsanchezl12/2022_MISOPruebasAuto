@@ -82,7 +82,7 @@ Prueba de Funcionamiento: https://youtu.be/sG5FoiNgN2k
 - Update Tag FacebookData - Tags
 - Check Metadata Tags - Tags
 
-## Impacto pruebas de regresión
+## IMPACTO PRUEBAS DE REGRESIÓN
 En terminos de pruebas fallidas y exitosas en el cambio de versiones de Ghost se pudo encontrar un gran numero de puebas fallidas, consideramos fue debido a:
 - cambio en el nombre de selectores
 - cambio en la  interfaz de página principal
