@@ -1,14 +1,6 @@
 import {faker} from '@faker-js/faker'
 import { user,password, MainPage } from '../../../config';
 
-var count = 0;
-function ScreenShot(){
-    const testname = `screenshot_${count}`
-    cy.screenshot(testname);
-    cy.wait(2000);
-    count++;
-}
-
 describe('Testing Ghost Members', () => {
     beforeEach(()=>{
         cy.visit(MainPage + 'ghost/#/signin')
@@ -94,7 +86,7 @@ describe('Testing Ghost Members', () => {
         cy.wait(2000)
      })
 
-     it('validación nuevo miembro (email) obligatorio .com', ()=>{
+     it('validación nuevo miembro (email) caracteres especiales', ()=>{
         cy.get('#members_svg__Regular').click()
         cy.wait(2000)
         cy.get('.gh-btn-primary').click()
