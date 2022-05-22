@@ -1,5 +1,5 @@
 import {faker} from '@faker-js/faker'
-import { user,password, MainPage } from '../../../config';
+import { user,password, MainPage } from '../../config';
 
 describe('Testing Ghost Members', () => {
     beforeEach(()=>{

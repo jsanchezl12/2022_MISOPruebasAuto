@@ -1,8 +1,8 @@
-import { user,password, MainPage } from '../../../config';
+import { user,password, MainPage } from '../../config';
 
-const local_data_pool_tags = 'cypress/fixtures/members_data.json';
+const url_api_mockaroo_tags = `https://my.api.mockaroo.com/members_schema.json?key=113515a0`;
 
-describe('Testing Ghost Members [APRIORI]', () => {
+describe('Testing Ghost Members [PSEUDO]', () => {
     beforeEach(()=>{
         cy.visit(MainPage + 'ghost/#/signin')
         cy.wait(3000)
@@ -17,41 +17,51 @@ describe('Testing Ghost Members [APRIORI]', () => {
         cy.wait(2000)
         cy.get('.gh-btn-primary').click()
         cy.wait(2000)
-        cy.readFile(local_data_pool_tags).then((obj) => {
-            var keys = Object.keys(obj);
-            var obj = obj[keys[ keys.length * Math.random() << 0]];
-            var memberEmail = obj['member_email'];
-            var memberName = obj['member_name'];
-            var memberLabel = obj['member_label'];
-            var memberDescription = obj['member_description'];
-            //console.log(tagname);
-            cy.get('#member-email').type(memberEmail);
-            cy.wait(2000);
-            cy.get('#member-name').type(memberName);
-            cy.wait(2000);
+        cy.request({
+            method : 'GET',
+            url:url_api_mockaroo_tags, 
+            responseType : 'application/json'
+        }).then((response) => {
+            expect(response).property('status').to.equal(200)
+            const body = (response.body)
+            var keys = Object.keys(body)
+            var obj = body[keys[ keys.length * Math.random() << 0]]
+            var memberEmail = obj['members_email'];
+            var memberName = obj['members_name'];
+            var memberLabel = obj['members_label'];
+            var memberDescription = obj['members_detail']
+            cy.get('#member-email').type(memberEmail)
+            cy.wait(2000)
+            cy.get('#member-name').type(memberName)
+            cy.wait(2000)
             cy.get('.ember-power-select-trigger-multiple-input').type(memberLabel);
-            cy.wait(2000);
+            cy.wait(2000)
             cy.get('#member-note').type(memberDescription);
-            cy.wait(2000);
+            cy.wait(2000)
             cy.get('.gh-btn-primary').click()
         cy.wait(2000)
         cy.get('.gh-main-section-header').should('have.text', 'Engagement')
         cy.wait(2000)
-        }) ;   
+        })   
     }) 
 
-     it('validación nuevo miembro (email) obligatorio @', ()=>{
+    it('validación nuevo miembro (email) obligatorio @', ()=>{
         cy.get('#members_svg__Regular').click()
         cy.wait(2000)
         cy.get('.gh-btn-primary').click()
         cy.wait(2000)
-        cy.readFile(local_data_pool_tags).then((obj) => {
-            var keys = Object.keys(obj);
-            var obj = obj[keys[ keys.length * Math.random() << 0]];
-            var memberName = obj['member_name'];
-            var memberLabel = obj['member_label'];
-            var memberDescription = obj['member_description'];
-            //console.log(tagname);
+        cy.request({
+            method : 'GET',
+            url:url_api_mockaroo_tags, 
+            responseType : 'application/json'
+        }).then((response) => {
+            expect(response).property('status').to.equal(200)
+            const body = (response.body)
+            var keys = Object.keys(body)
+            var obj = body[keys[ keys.length * Math.random() << 0]]
+            var memberName = obj['members_name'];
+            var memberLabel = obj['members_label'];
+            var memberDescription = obj['members_detail']
             cy.get('#member-email').type(memberName);
             cy.wait(2000);
             cy.get('#member-name').type(memberName);
@@ -72,13 +82,18 @@ describe('Testing Ghost Members [APRIORI]', () => {
         cy.wait(2000)
         cy.get('.gh-btn-primary').click()
         cy.wait(2000)
-        cy.readFile(local_data_pool_tags).then((obj) => {
-            var keys = Object.keys(obj);
-            var obj = obj[keys[ keys.length * Math.random() << 0]];
-            var memberName = obj['member_name'];
-            var memberLabel = obj['member_label'];
-            var memberDescription = obj['member_description'];
-            //console.log(tagname);
+        cy.request({
+            method : 'GET',
+            url:url_api_mockaroo_tags, 
+            responseType : 'application/json'
+        }).then((response) => {
+            expect(response).property('status').to.equal(200)
+            const body = (response.body)
+            var keys = Object.keys(body)
+            var obj = body[keys[ keys.length * Math.random() << 0]]
+            var memberName = obj['members_name'];
+            var memberLabel = obj['members_label'];
+            var memberDescription = obj['members_detail']
             cy.get('#member-email').type('prueba@uniandes');
             cy.wait(2000);
             cy.get('#member-name').type(memberName);
@@ -93,19 +108,24 @@ describe('Testing Ghost Members [APRIORI]', () => {
         cy.wait(2000)
          });
     })
-     
-     it('validación nuevo miembro (email) vacio', ()=>{
+
+    it('validación nuevo miembro (email) vacio', ()=>{
         cy.get('#members_svg__Regular').click()
         cy.wait(2000)
         cy.get('.gh-btn-primary').click()
         cy.wait(2000)
-        cy.readFile(local_data_pool_tags).then((obj) => {
-            var keys = Object.keys(obj);
-            var obj = obj[keys[ keys.length * Math.random() << 0]];
-            var memberName = obj['member_name'];
-            var memberLabel = obj['member_label'];
-            var memberDescription = obj['member_description'];
-            //console.log(tagname);
+        cy.request({
+            method : 'GET',
+            url:url_api_mockaroo_tags, 
+            responseType : 'application/json'
+        }).then((response) => {
+            expect(response).property('status').to.equal(200)
+            const body = (response.body)
+            var keys = Object.keys(body)
+            var obj = body[keys[ keys.length * Math.random() << 0]]
+            var memberName = obj['members_name'];
+            var memberLabel = obj['members_label'];
+            var memberDescription = obj['members_detail']
             cy.get('.ember-power-select-trigger-multiple-input').type(memberLabel);
             cy.wait(2000);
             cy.get('#member-name').type(memberName);
@@ -117,19 +137,26 @@ describe('Testing Ghost Members [APRIORI]', () => {
         cy.wait(2000)
         })
      })
-    
-     it('validación nuevo miembro (email) caracteres especiales', ()=>{
+   
+
+    it('validación nuevo miembro (email) caracteres especiales', ()=>{
         cy.get('#members_svg__Regular').click()
         cy.wait(2000)
         cy.get('.gh-btn-primary').click()
         cy.wait(2000)
-        cy.readFile(local_data_pool_tags).then((obj) => {
-            var keys = Object.keys(obj);
-            var obj = obj[keys[ keys.length * Math.random() << 0]];
-            var memberName = obj['member_name'];
-            var memberLabel = obj['member_label'];
-            var memberDescription = obj['member_description'];
-            //console.log(tagname);
+        cy.request({
+            method : 'GET',
+            url:url_api_mockaroo_tags, 
+            responseType : 'application/json'
+        }).then((response) => {
+            expect(response).property('status').to.equal(200)
+            const body = (response.body)
+            var keys = Object.keys(body)
+            var obj = body[keys[ keys.length * Math.random() << 0]]
+            var memberEmail = obj['members_email'];
+            var memberName = obj['members_name'];
+            var memberLabel = obj['members_label'];
+            var memberDescription = obj['members_detail']
             cy.get('#member-email').type('=)(/&%$·"!"·$%');
             cy.wait(2000);
             cy.get('#member-name').type(memberName);
@@ -143,20 +170,25 @@ describe('Testing Ghost Members [APRIORI]', () => {
         cy.wait(2000)
         }) 
      })
-     
+    
      it('validación nuevo miembro (Description) máximo de caracteres', ()=>{
         cy.get('#members_svg__Regular').click()
         cy.wait(2000)
         cy.get('.gh-btn-primary').click()
         cy.wait(2000)
-        cy.readFile(local_data_pool_tags).then((obj) => {
-            var keys = Object.keys(obj);
-            var obj = obj[keys[ keys.length * Math.random() << 0]];
-            var memberEmail = obj['member_email'];
-            var memberName = obj['member_name'];
-            var memberLabel = obj['member_label'];
-            var memberDescription = obj['member_description'];
-            //console.log(tagname);
+        cy.request({
+            method : 'GET',
+            url:url_api_mockaroo_tags, 
+            responseType : 'application/json'
+        }).then((response) => {
+            expect(response).property('status').to.equal(200)
+            const body = (response.body)
+            var keys = Object.keys(body)
+            var obj = body[keys[ keys.length * Math.random() << 0]]
+            var memberEmail = obj['members_email'];
+            var memberName = obj['members_name'];
+            var memberLabel = obj['members_label'];
+            var memberDescription = obj['members_detail']
             cy.get('#member-email').type(memberEmail);
             cy.wait(2000);
             cy.get('#member-name').type(memberName);
@@ -176,19 +208,25 @@ describe('Testing Ghost Members [APRIORI]', () => {
         cy.wait(2000)
         })
     })
-     
-     it('editar nombre de un miembro', ()=>{
+
+    it('editar nombre de un miembro', ()=>{
         cy.get('#members_svg__Regular').click()
         cy.wait(2000)
         cy.get('.gh-btn-primary').click()
         cy.wait(2000)
-        cy.readFile(local_data_pool_tags).then((obj) => {
-            var keys = Object.keys(obj);
-            var obj = obj[keys[ keys.length * Math.random() << 0]];
-            var memberEmail = obj['member_email'];
-            var memberName = obj['member_name'];
-            var memberLabel = obj['member_label'];
-            var memberDescription = obj['member_description'];
+        cy.request({
+            method : 'GET',
+            url:url_api_mockaroo_tags, 
+            responseType : 'application/json'
+        }).then((response) => {
+            expect(response).property('status').to.equal(200)
+            const body = (response.body)
+            var keys = Object.keys(body)
+            var obj = body[keys[ keys.length * Math.random() << 0]]
+            var memberEmail = obj['members_email'];
+            var memberName = obj['members_name'];
+            var memberLabel = obj['members_label'];
+            var memberDescription = obj['members_detail']
             cy.get('#member-email').type(memberEmail);
             cy.wait(2000);
             cy.get('#member-name').type(memberName);
@@ -215,19 +253,25 @@ describe('Testing Ghost Members [APRIORI]', () => {
         cy.wait(2000)
         })
     })
-
-     it('editar email de un miembro', ()=>{
+   
+    it('editar email de un miembro', ()=>{
         cy.get('#members_svg__Regular').click()
         cy.wait(2000)
         cy.get('.gh-btn-primary').click()
         cy.wait(2000)
-        cy.readFile(local_data_pool_tags).then((obj) => {
-            var keys = Object.keys(obj);
-            var obj = obj[keys[ keys.length * Math.random() << 0]];
-            var memberEmail = obj['member_email'];
-            var memberName = obj['member_name'];
-            var memberLabel = obj['member_label'];
-            var memberDescription = obj['member_description'];
+        cy.request({
+            method : 'GET',
+            url:url_api_mockaroo_tags, 
+            responseType : 'application/json'
+        }).then((response) => {
+            expect(response).property('status').to.equal(200)
+            const body = (response.body)
+            var keys = Object.keys(body)
+            var obj = body[keys[ keys.length * Math.random() << 0]]
+            var memberEmail = obj['members_email'];
+            var memberName = obj['members_name'];
+            var memberLabel = obj['members_label'];
+            var memberDescription = obj['members_detail']
             cy.get('#member-email').type(memberEmail);
             cy.wait(2000);
             cy.get('#member-name').type(memberName);
@@ -255,19 +299,25 @@ describe('Testing Ghost Members [APRIORI]', () => {
         cy.wait(2000)
         })
     })
-   
-     it('editar label de un miembro', ()=>{
+    
+    it('editar label de un miembro', ()=>{
         cy.get('#members_svg__Regular').click()
         cy.wait(2000)
         cy.get('.gh-btn-primary').click()
         cy.wait(2000)
-        cy.readFile(local_data_pool_tags).then((obj) => {
-            var keys = Object.keys(obj);
-            var obj = obj[keys[ keys.length * Math.random() << 0]];
-            var memberEmail = obj['member_email'];
-            var memberName = obj['member_name'];
-            var memberLabel = obj['member_label'];
-            var memberDescription = obj['member_description'];
+        cy.request({
+            method : 'GET',
+            url:url_api_mockaroo_tags, 
+            responseType : 'application/json'
+        }).then((response) => {
+            expect(response).property('status').to.equal(200)
+            const body = (response.body)
+            var keys = Object.keys(body)
+            var obj = body[keys[ keys.length * Math.random() << 0]]
+            var memberEmail = obj['members_email'];
+            var memberName = obj['members_name'];
+            var memberLabel = obj['members_label'];
+            var memberDescription = obj['members_detail']
             cy.get('#member-email').type(memberEmail);
             cy.wait(2000);
             cy.get('#member-name').type(memberName);
@@ -294,18 +344,24 @@ describe('Testing Ghost Members [APRIORI]', () => {
         })
     })
 
-     it('editar nota de un miembro', ()=>{
+    it('editar nota de un miembro', ()=>{
         cy.get('#members_svg__Regular').click()
         cy.wait(2000)
         cy.get('.gh-btn-primary').click()
         cy.wait(2000)
-        cy.readFile(local_data_pool_tags).then((obj) => {
-            var keys = Object.keys(obj);
-            var obj = obj[keys[ keys.length * Math.random() << 0]];
-            var memberEmail = obj['member_email'];
-            var memberName = obj['member_name'];
-            var memberLabel = obj['member_label'];
-            var memberDescription = obj['member_description'];
+        cy.request({
+            method : 'GET',
+            url:url_api_mockaroo_tags, 
+            responseType : 'application/json'
+        }).then((response) => {
+            expect(response).property('status').to.equal(200)
+            const body = (response.body)
+            var keys = Object.keys(body)
+            var obj = body[keys[ keys.length * Math.random() << 0]]
+            var memberEmail = obj['members_email'];
+            var memberName = obj['members_name'];
+            var memberLabel = obj['members_label'];
+            var memberDescription = obj['members_detail']
             cy.get('#member-email').type(memberEmail);
             cy.wait(2000);
             cy.get('#member-name').type(memberName);
@@ -331,4 +387,4 @@ describe('Testing Ghost Members [APRIORI]', () => {
         cy.wait(2000)
       })
     })
-})
+ })
