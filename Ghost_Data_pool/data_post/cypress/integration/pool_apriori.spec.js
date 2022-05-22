@@ -12,14 +12,14 @@ describe("Testing Ghost Posts", () => {
     Login();
   })
 
-/*  it("Post; titulo y descripción", function () {
+ it("Post; titulo y descripción", function () {
     // 1. Escenario positivo - a priori
-    //Post_Esc_1();
+    Post_Esc_1();
   });
 
   it("Post: titulo vacio y descripción", function () {
     // 2. Escenario positivo - a priori
-    //Post_Esc_2();
+    Post_Esc_2();
   });
 
   
@@ -30,12 +30,39 @@ describe("Testing Ghost Posts", () => {
 
   it("Post: titulo con expresiones regulares y descripción vacío", function () {
     // 4. Escenario positivo - a priori
-    //Post_Esc_4();
+    Post_Esc_4();
   });
-*/
+
   it("Post: titulo con universidades, descripción vacío e imagen", function () {
     // 5. Escenario positivo - a priori
     Post_Esc_5();
+  });
+
+  t("Post: titulo con nombre de compañias y opciones hora expresiones regulares", function () {
+    // 6. Escenario negativo - a priori
+    Post_Esc_6();
+  });
+ 
+  it("Post: titulo con universidades y descripción y opciones fecha numeros", function () {
+    // 7. Escenario negativo - a priori
+    Post_Esc_7();
+  });
+  
+  
+  it("Post: titulo con  animales y descripción corta  y Post URL con expresiones numeros", function () {
+    // 8. Escenario negativo - a priori
+    Post_Esc_8();
+  });
+ 
+  
+  it("Post: titulo con  animales y descripción corta  y Post URL con expresiones regulares", function () {
+    // 9. Escenario negativo - a priori
+    Post_Esc_9();
+  });
+ 
+  it("Post: titulo vacío y descripción y Post URL con nombres de peliculas", function () {
+    // 10. Escenario negativo - a priori
+    Post_Esc_10();
   });
 
 });
@@ -170,4 +197,106 @@ function Post_Esc_5() {
     cy.wait(1000);
   })
 
+}
+
+function Post_Esc_6() {
+  cy.readFile("cypress/data/pool_apriori.json").then((obj) => {
+    var keys = Object.keys(obj);
+    var obj = obj[keys[(keys.length * Math.random()) << 0]];
+    cy.wait(1000);
+    cy.get(".gh-nav-new-post").click();
+    cy.wait(1000);
+    cy.get(".ember-text-area").type(obj["company"]);
+    cy.wait(1000);
+    cy.get(".settings-menu-toggle > span").click();
+    cy.wait(1000);
+    cy.get(".gh-date-time-picker-time").click();
+    cy.wait(1000);
+    cy.get(".gh-date-time-picker-time").type(obj["regular_expresion"]);
+    cy.wait(1000);
+    cy.get("form").click();
+    cy.wait(1000);
+  });
+}
+
+function Post_Esc_7() {
+  cy.readFile("cypress/data/pool_apriori.json").then((obj) => {
+    var keys = Object.keys(obj);
+    var obj = obj[keys[(keys.length * Math.random()) << 0]];
+    cy.wait(1000);
+    cy.get(".gh-nav-new-post").click();
+    cy.wait(1000);
+    cy.get(".ember-text-area").type(obj["university"]);
+    cy.wait(1000);
+    cy.get(".koenig-editor__editor").type(obj["paragraph"]);
+    cy.wait(1000);
+    cy.get(".settings-menu-toggle > span").click();
+    cy.wait(1000);
+    cy.get(".gh-date-time-picker-date").click();
+    cy.wait(1000);
+    cy.get(".gh-date-time-picker-date").type(obj["title_numbers"]);
+    cy.wait(1000);
+    cy.get("form").click();
+    cy.wait(1000);
+  });
+}
+
+function Post_Esc_8() {
+  cy.readFile("cypress/data/pool_apriori.json").then((obj) => {
+    var keys = Object.keys(obj);
+    var obj = obj[keys[(keys.length * Math.random()) << 0]];
+    cy.wait(1000);
+    cy.get(".gh-nav-new-post").click();
+    cy.wait(1000);
+    cy.get(".ember-text-area").type(obj["automoviles"]);
+    cy.wait(1000);
+    cy.get(".koenig-editor__editor").click();
+    cy.wait(1000);
+    //cy.get('.koenig-editor').type(obj['paragraph']);
+    cy.wait(1000);
+    cy.get(".settings-menu-toggle > span").click();
+    cy.wait(1000);
+    cy.get("#url").type(obj["numbers"]);
+    cy.wait(1000);
+    cy.get("form").click();
+  });
+}
+
+function Post_Esc_9() {
+  cy.readFile("cypress/data/pool_apriori.json").then((obj) => {
+    var keys = Object.keys(obj);
+    var obj = obj[keys[(keys.length * Math.random()) << 0]];
+    cy.wait(1000);
+    cy.get(".gh-nav-new-post").click();
+    cy.wait(1000);
+    cy.get(".ember-text-area").type(obj["text_image"]);
+    cy.wait(1000);
+    cy.get(".koenig-editor__editor").click();
+    cy.wait(1000);
+    //cy.get('.koenig-editor').type(obj['description']);
+    cy.wait(1000);
+    cy.get(".settings-menu-toggle > span").click();
+    cy.wait(1000);
+    cy.get("#url").type(obj["regular_expresion"]);
+    cy.wait(1000);
+    cy.get("form").click();
+  });
+}
+function Post_Esc_10() {
+  cy.readFile("cypress/data/pool_apriori.json").then((obj) => {
+    var keys = Object.keys(obj);
+    var obj = obj[keys[(keys.length * Math.random()) << 0]];
+    cy.wait(1000);
+    cy.get(".gh-nav-new-post").click();
+    cy.wait(1000);
+    cy.get(".koenig-editor__editor").click();
+    cy.wait(1000);
+    cy.get('.koenig-editor').type(obj['description']);
+    cy.wait(1000);
+    cy.get(".settings-menu-toggle > span").click();
+    cy.wait(1000);
+    cy.get("#url").type(obj["title"]);
+    cy.wait(1000);
+    cy.get("form").click();
+  });
 }
