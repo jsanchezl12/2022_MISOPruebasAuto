@@ -1,6 +1,16 @@
 # Ghost-Issues
 Reporte de incidencias Ghost 
 
+# Pasos para ejecutar las pruebas Datapool-Random
+
+- Clone el repositorio (git clone https://github.com/jsanchezl12/2022_MISOPruebasAuto.git)
+- La pruebas se encuentran en la carpeta Ghost_Data_pool/cypress/integration/ cada una de las carpetas contiene 30 escenarios (10 Apriori, 10 Random, 10 Pseudo) para un total de 120 escenarios.
+- Asegurese de ubicarse en la rama principal donde se encuentran todos los test integrados (git checkout main)
+- Cambie las credenciales en el archivo config.js y en el "describe" de cada uno de los archivos que vaya a probar.
+- Inicie el servidor Ghost en su maquina local (ghost start) VERSION GHOST 4.41.3 
+- Inicie Cypress (cypress open)
+- Ejecute las pruebas a través de la consola desplegada por Cypress.
+
 
 # Pasos para ejecutar la pruebas
 - Clone el repositorio (git clone https://github.com/jsanchezl12/2022_MISOPruebasAuto.git)
