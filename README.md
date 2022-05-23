@@ -12,7 +12,7 @@ Reporte de incidencias Ghost
 - Ejecute las pruebas a través de la consola desplegada por Cypress.
 
 
-# Pasos para ejecutar la pruebas
+# Pasos para ejecutar la pruebas de regresión
 - Clone el repositorio (git clone https://github.com/jsanchezl12/2022_MISOPruebasAuto.git)
 - Asegurese de ubicarse en la rama principal donde se encuentran todos los test integrados (git checkout main)
 - Las pruebas se encuentran separadas en dos carpetas por versiones Ghost_3.41.1 y Ghost_4.41.3 cada una a su vez contienen las pruebas desarrolladas con Kraken y Cypress
