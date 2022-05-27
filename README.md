@@ -19,7 +19,7 @@
 ## Inventario de pruebas manuales
 - https://uniandes-my.sharepoint.com/:x:/g/personal/mf_moraless1_uniandes_edu_co/EZAZ6V1enP1IpOIsZwzI0KABFLnRYcZlqkWQPmnRlFJVhA?e=RqPJ8g
 
-## Presentación de resultado de poruebas, Pros y contras 
+## Presentación de resultado de pruebas, Pros y contras 
 - https://uniandes-my.sharepoint.com/:p:/g/personal/mf_moraless1_uniandes_edu_co/EccM-nNza5tEqxpW3NfjKjEBxzUn4T17avijpzsaoppwnw?e=YmlM16
 
 
