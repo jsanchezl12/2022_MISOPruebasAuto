@@ -1,28 +1,25 @@
-##Presupuestos
 
-###Presupuesto 1
+## Presupuestos
+
+### Presupuesto 1
 - https://uniandes-my.sharepoint.com/:b:/g/personal/mf_moraless1_uniandes_edu_co/EUiZaoARZXZCqHz_UOIVRQoBH5hEixFk6QAzsfhvcsl93g?e=Z93FpK
 
-###Presupuesto 2
+### Presupuesto 2
 - https://uniandes-my.sharepoint.com/:b:/g/personal/mf_moraless1_uniandes_edu_co/EZ3vm3PRDrFNo81DJCdK9zUBq1ItQd421h2l0hQDeffQDA?e=2QMFxY
 
-###presupuesto 3 Semana 8
+### presupuesto 3 Semana 8
 - https://uniandes-my.sharepoint.com/:b:/g/personal/mf_moraless1_uniandes_edu_co/EXLAPnEMfNROht6Ex4rPGzoBHtOi0zT1J7uR5hSYWDuWcg?e=aS8l3c
 
-##Insidencias encontradas
-#Insidencias
+## Insidencias encontradas
 - https://github.com/jsanchezl12/2022_MISOPruebasAuto/issues
 
-##Video
-#Video presentación final
+## Video presentación final
 - https://www.youtube.com/watch?v=HOhs-u9LyqA&t=2s
 
-##Inventario
-#Inventario de pruebas manuales
+## Inventario de pruebas manuales
 - https://uniandes-my.sharepoint.com/:x:/g/personal/mf_moraless1_uniandes_edu_co/EZAZ6V1enP1IpOIsZwzI0KABFLnRYcZlqkWQPmnRlFJVhA?e=RqPJ8g
 
-##Presentación
-#Presentación de resultado de poruebas, Pros y contras 
+## Presentación de resultado de poruebas, Pros y contras 
 - https://uniandes-my.sharepoint.com/:p:/g/personal/mf_moraless1_uniandes_edu_co/EccM-nNza5tEqxpW3NfjKjEBxzUn4T17avijpzsaoppwnw?e=YmlM16
 
 
