@@ -1,6 +1,3 @@
-# Ghost-Issues
-Reporte de incidencias Ghost 
-
 # Pasos para ejecutar las pruebas Datapool-Random
 
 - Clone el repositorio (git clone https://github.com/jsanchezl12/2022_MISOPruebasAuto.git)
@@ -27,7 +24,7 @@ Reporte de incidencias Ghost
 - Si decide cambiar de version ubiquese en la carpeta con la version de Ghost elegida
 - Inicie el servidor Ghost según la version que vaya probar en su maquina local (ghost start) y repita los pasos anteriores
  
-
+ 
 # pruebas de regresión visuales
 ## Pasos para ejecutar los 10 test E2E seleccionados
 - Ingrese al repositorio de GitHub del proyecto (https://github.com/jsanchezl12/2022_MISOPruebasAuto)
