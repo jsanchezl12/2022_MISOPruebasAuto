@@ -1,4 +1,4 @@
-##Presupuesos
+##Presupuestos
 
 ###Presupuesto 1
 https://uniandes-my.sharepoint.com/:b:/g/personal/mf_moraless1_uniandes_edu_co/EUiZaoARZXZCqHz_UOIVRQoBH5hEixFk6QAzsfhvcsl93g?e=Z93FpK
