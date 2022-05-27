@@ -39,9 +39,7 @@
 - Se desplegara el reporte del resultado de las pruebas de regresión visual
 
 
-# pruebas-ghost
 ## Pruebas automatizadas - KRAKEN
-
 # Pasos para ejecutar
 - Descargar el repositorio: git clone + URL del repostitorio
 - Para ir a la rama donde esta todos los test integrados (git checkhout develop)
