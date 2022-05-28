@@ -1,13 +1,13 @@
 
 ## Presupuestos
 
-### Presupuesto 1
+### Estrategia de pruebas 1
 - https://uniandes-my.sharepoint.com/:b:/g/personal/mf_moraless1_uniandes_edu_co/EUiZaoARZXZCqHz_UOIVRQoBH5hEixFk6QAzsfhvcsl93g?e=Z93FpK
 
-### Presupuesto 2
+### Estrategia de pruebas 2
 - https://uniandes-my.sharepoint.com/:b:/g/personal/mf_moraless1_uniandes_edu_co/EZ3vm3PRDrFNo81DJCdK9zUBq1ItQd421h2l0hQDeffQDA?e=2QMFxY
 
-### presupuesto 3 Semana 8
+### Estrategia de pruebas 3 Semana 8
 - https://uniandes-my.sharepoint.com/:b:/g/personal/mf_moraless1_uniandes_edu_co/EXLAPnEMfNROht6Ex4rPGzoBHtOi0zT1J7uR5hSYWDuWcg?e=aS8l3c
 
 ## Insidencias encontradas
